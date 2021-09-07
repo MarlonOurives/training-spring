@@ -12,6 +12,7 @@ public class MembershipMapper {
 
     public Membership toEntity(MembershipDTO membershipDTO){
         Membership membership = new Membership();
+        membership.setId(membershipDTO.getId());
         membership.setName(membershipDTO.getName());
         membership.setBithDate(membershipDTO.getBithDate());
         membership.setWeight(membershipDTO.getWeight());
@@ -23,6 +24,7 @@ public class MembershipMapper {
 
     public MembershipDTO toDto(Membership membership){
         MembershipDTO membershipDTO = new MembershipDTO();
+        membershipDTO.setId(membership.getId());
         membershipDTO.setName(membership.getName());
         membershipDTO.setBithDate(membership.getBithDate());
         membershipDTO.setWeight(membership.getWeight());

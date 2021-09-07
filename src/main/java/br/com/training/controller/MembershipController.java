@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -22,4 +23,13 @@ public class MembershipController {
         return ResponseEntity.ok(membershipService.save(membershipDTO));
     }
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<MembershipDTO>> findAll(){
+        return ResponseEntity.ok(membershipService.findAll());
+    }
+
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<MembershipDTO> findById(@PathVariable Long id){
+        return ResponseEntity.ok(membershipService.findById(id));
+    }
 }
