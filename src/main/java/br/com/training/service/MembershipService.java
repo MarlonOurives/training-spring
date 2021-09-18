@@ -47,4 +47,18 @@ public class MembershipService {
     public MembershipDTO findById(Long id){
         return membershipRepository.findById(id).map(membershipMapper::toDto).orElseThrow(NotFoundException::new);
     }
+
+    @Transactional
+    public MembershipDTO update(MembershipDTO membershipDTO){
+        Optional<Membership> optionalMembership = membershipRepository.findByNameAndId(membershipDTO.getName(), membershipDTO.getId());
+        if (optionalMembership.isPresent()){
+            throw new BusinessException(MessageUtils.MEMBERSHIP_ALREADY_EXISTS);
+        }
+        Membership membership = membershipMapper.toEntity(membershipDTO);
+        membershipRepository.save(membership);
+        return membershipMapper.toDto(membership);
+    }
+
+
+
 }

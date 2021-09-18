@@ -32,4 +32,9 @@ public class MembershipController {
     public ResponseEntity<MembershipDTO> findById(@PathVariable Long id){
         return ResponseEntity.ok(membershipService.findById(id));
     }
+
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<MembershipDTO> update(@Valid @RequestBody MembershipDTO membershipDTO){
+        return ResponseEntity.ok(membershipService.update(membershipDTO));
+    }
 }
