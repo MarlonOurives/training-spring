@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface MuscleRepository extends JpaRepository<MuscleRepository, Long> {
+public interface MuscleRepository extends JpaRepository<Muscle, Long> {
     Optional<Muscle> findByName(String name);
 
 }

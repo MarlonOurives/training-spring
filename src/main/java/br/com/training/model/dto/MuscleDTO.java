@@ -5,14 +5,13 @@ import javax.validation.constraints.NotNull;
 
 public class MuscleDTO {
     private Long id;
-
+    
     @NotNull
     private String name;
     @NotNull
     private String series;
     @NotNull
     private String repetition;
-    
     private String time;
     private String weekday;
 
