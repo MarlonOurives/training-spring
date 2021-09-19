@@ -45,4 +45,15 @@ public class MuscleService {
     public MuscleDTO findById(Long id){
         return muscleRepository.findById(id).map(muscleMapper::toDto).orElseThrow(NotFoundException::new);
     }
+
+    @Transactional(readOnly = true)
+    public MuscleDTO update(MuscleDTO muscleDTO){
+        Optional<Muscle> optionalMuscle = muscleRepository.findByName(muscleDTO.getName());
+        if(optionalMuscle.isPresent()){
+            throw new BusinessException(MessageUtils.MUSCLE_ALREADY_EXISTS);
+        }
+        Muscle muscle = muscleMapper.toEntity(muscleDTO);
+        muscleRepository.save(muscle);
+        return muscleMapper.toDto(muscle);
+    }
 }
