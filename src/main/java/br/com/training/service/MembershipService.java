@@ -59,6 +59,13 @@ public class MembershipService {
         return membershipMapper.toDto(membership);
     }
 
+    @Transactional
+    public MembershipDTO deleteById(Long id){
+        MembershipDTO membershipDTO = this.findById(id);
+        membershipRepository.deleteById(membershipDTO.getId());
+        return membershipDTO;
+    }
+
 
 
 }
