@@ -56,4 +56,13 @@ public class MuscleService {
         muscleRepository.save(muscle);
         return muscleMapper.toDto(muscle);
     }
+
+    @Transactional
+    public MuscleDTO deleteById(Long id){
+        MuscleDTO muscleDTO = this.findById(id);
+        muscleRepository.deleteById(muscleDTO.getId());
+        return muscleDTO;
+    }
+
+
 }
