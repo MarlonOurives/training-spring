@@ -37,4 +37,9 @@ public class MembershipController {
     public ResponseEntity<MembershipDTO> update(@Valid @RequestBody MembershipDTO membershipDTO){
         return ResponseEntity.ok(membershipService.update(membershipDTO));
     }
+
+    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<MembershipDTO> delete(@PathVariable Long id){
+        return ResponseEntity.ok(membershipService.deleteById(id));
+    }
 }
