@@ -46,7 +46,7 @@ public class MuscleService {
         return muscleRepository.findById(id).map(muscleMapper::toDto).orElseThrow(NotFoundException::new);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public MuscleDTO update(MuscleDTO muscleDTO){
         Optional<Muscle> optionalMuscle = muscleRepository.findByName(muscleDTO.getName());
         if(optionalMuscle.isPresent()){

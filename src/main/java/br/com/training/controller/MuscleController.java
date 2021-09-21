@@ -31,5 +31,9 @@ public class MuscleController {
     public ResponseEntity<MuscleDTO> findById(@PathVariable Long id){
         return ResponseEntity.ok(muscleService.findById(id));
     }
-    
+
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<MuscleDTO> update(@Valid @RequestBody MuscleDTO muscleDTO){
+        return ResponseEntity.ok(muscleService.update(muscleDTO));
+    }
 }
