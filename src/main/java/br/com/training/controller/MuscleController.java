@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/muscle")
@@ -20,4 +21,15 @@ public class MuscleController {
     public ResponseEntity<MuscleDTO> save(@Valid @RequestBody MuscleDTO muscleDTO){
         return ResponseEntity.ok(muscleService.save(muscleDTO));
     }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<MuscleDTO>> findAll(){
+        return ResponseEntity.ok(muscleService.findAll());
+    }
+
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<MuscleDTO> findById(@PathVariable Long id){
+        return ResponseEntity.ok(muscleService.findById(id));
+    }
+    
 }
