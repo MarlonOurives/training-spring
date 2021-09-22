@@ -1,18 +1,28 @@
 package br.com.training.model.dto;
 
-import javax.persistence.Column;
+import br.com.training.enums.Muscle;
+
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 
-public class MuscleDTO {
+public class TrainingDTO {
     private Long id;
-    
+
+    @Enumerated(EnumType.STRING)
+    private Muscle muscle;
+
     @NotNull
     private String name;
+
     @NotNull
     private String series;
+
     @NotNull
     private String repetition;
+
     private String time;
+
     private String weekday;
 
     public Long getId() {
@@ -61,5 +71,13 @@ public class MuscleDTO {
 
     public void setWeekday(String weekday) {
         this.weekday = weekday;
+    }
+
+    public Muscle getMuscle() {
+        return muscle;
+    }
+
+    public void setMuscle(Muscle muscle) {
+        this.muscle = muscle;
     }
 }

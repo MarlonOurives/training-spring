@@ -1,23 +1,33 @@
 package br.com.training.model;
 
+import br.com.training.enums.Muscle;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "muscle")
-public class Muscle {
+@Table(name = "training")
+public class Training {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "muscle", nullable = false)
+    private Muscle muscle;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "series")
     private String series;
+
     @Column(name = "repetition")
     private String repetition;
+
     @Column(name = "time")
     private String time;
+
     @Column(name = "weekday")
     private String weekday;
 
@@ -67,5 +77,13 @@ public class Muscle {
 
     public void setWeekday(String weekday) {
         this.weekday = weekday;
+    }
+
+    public Muscle getMuscle() {
+        return muscle;
+    }
+
+    public void setMuscle(Muscle muscle) {
+        this.muscle = muscle;
     }
 }
