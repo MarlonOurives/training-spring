@@ -36,4 +36,9 @@ public class MuscleController {
     public ResponseEntity<MuscleDTO> update(@Valid @RequestBody MuscleDTO muscleDTO){
         return ResponseEntity.ok(muscleService.update(muscleDTO));
     }
+
+    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<MuscleDTO> delete(@PathVariable Long id){
+        return ResponseEntity.ok(muscleService.deleteById(id));
+    }
 }
