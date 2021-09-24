@@ -19,6 +19,7 @@ public class MembershipMapper {
         membership.setLevel(membershipDTO.getLevel());
         membership.setDescription(membershipDTO.getDescription());
         membership.setGoal(membershipDTO.getGoal());
+        membership.setTrainings(membershipDTO.getTrainings());
         return membership;
     }
 
@@ -31,6 +32,7 @@ public class MembershipMapper {
         membershipDTO.setLevel(membership.getLevel());
         membershipDTO.setDescription(membership.getDescription());
         membershipDTO.setGoal(membership.getGoal());
+        membershipDTO.setTrainings(membership.getTrainings());
         return membershipDTO;
     }
 

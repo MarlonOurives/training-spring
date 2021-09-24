@@ -2,7 +2,9 @@ package br.com.training.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "membership")
@@ -30,6 +32,9 @@ public class Membership {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    private List<Training> trainings = new ArrayList<Training>();
 
 
     public Long getId() {
@@ -86,5 +91,13 @@ public class Membership {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Training> getTrainings() {
+        return trainings;
+    }
+
+    public void setTrainings(List<Training> trainings) {
+        this.trainings = trainings;
     }
 }

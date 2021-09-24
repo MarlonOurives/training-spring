@@ -4,8 +4,11 @@ import br.com.training.exceptions.BusinessException;
 import br.com.training.exceptions.NotFoundException;
 import br.com.training.mapper.MembershipMapper;
 import br.com.training.model.Membership;
+import br.com.training.model.Training;
 import br.com.training.model.dto.MembershipDTO;
+import br.com.training.model.dto.TrainingDTO;
 import br.com.training.repository.MembershipRepository;
+import br.com.training.repository.TrainingRepository;
 import br.com.training.util.MessageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,13 +16,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class MembershipService {
 
     @Autowired
     private MembershipRepository membershipRepository;
+
+    @Autowired
+    private TrainingRepository trainingRepository;
 
     @Autowired
     private MembershipMapper membershipMapper;
@@ -49,9 +54,10 @@ public class MembershipService {
     }
 
     @Transactional
-    public MembershipDTO update(MembershipDTO membershipDTO){
+    public MembershipDTO update(MembershipDTO membershipDTO, TrainingDTO trainingDTO){
         Optional<Membership> optionalMembership = membershipRepository.findByNameAndId(membershipDTO.getName(), membershipDTO.getId());
-        if (optionalMembership.isPresent()){
+        Optional<Training> optionalTraining = trainingRepository.findByName(trainingDTO.getName());
+        if (optionalMembership.isPresent() && optionalTraining.isPresent()){
             throw new BusinessException(MessageUtils.MEMBERSHIP_ALREADY_EXISTS);
         }
         Membership membership = membershipMapper.toEntity(membershipDTO);

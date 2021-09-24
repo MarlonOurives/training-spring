@@ -1,6 +1,7 @@
 package br.com.training.controller;
 
 import br.com.training.model.dto.MembershipDTO;
+import br.com.training.model.dto.TrainingDTO;
 import br.com.training.service.MembershipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -34,8 +35,8 @@ public class MembershipController {
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<MembershipDTO> update(@Valid @RequestBody MembershipDTO membershipDTO){
-        return ResponseEntity.ok(membershipService.update(membershipDTO));
+    public ResponseEntity<MembershipDTO> update(@Valid @RequestBody MembershipDTO membershipDTO, TrainingDTO trainingDTO){
+        return ResponseEntity.ok(membershipService.update(membershipDTO, trainingDTO ));
     }
 
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

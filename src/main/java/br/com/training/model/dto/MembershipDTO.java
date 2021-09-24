@@ -1,10 +1,14 @@
 package br.com.training.model.dto;
 
+import br.com.training.model.Training;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.List;
 
 public class MembershipDTO {
 
@@ -24,6 +28,8 @@ public class MembershipDTO {
     private String goal;
 
     private String description;
+
+    private List<Training> trainings;
 
     public Long getId() {
         return id;
@@ -79,5 +85,13 @@ public class MembershipDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Training> getTrainings() {
+        return trainings;
+    }
+
+    public void setTrainings(List<Training> trainings) {
+        this.trainings = trainings;
     }
 }

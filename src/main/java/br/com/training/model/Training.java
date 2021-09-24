@@ -86,4 +86,5 @@ public class Training {
     public void setMuscle(Muscle muscle) {
         this.muscle = muscle;
     }
+
 }

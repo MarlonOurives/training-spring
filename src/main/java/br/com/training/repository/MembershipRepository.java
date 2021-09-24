@@ -13,4 +13,5 @@ public interface MembershipRepository extends JpaRepository<Membership, Long> {
     Optional<Membership> findByName(String name);
 
     Optional<Membership> findByNameAndId(String name, Long id);
+
 }
