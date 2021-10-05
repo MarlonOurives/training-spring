@@ -30,8 +30,8 @@ public class TrainingMapper {
         trainingDTO.setName(training.getName());
         trainingDTO.setRepetition(training.getRepetition());
         trainingDTO.setSeries(training.getSeries());
-        training.setTime(training.getTime());
-        training.setWeekday(trainingDTO.getWeekday());
+        trainingDTO.setTime(training.getTime());
+        trainingDTO.setWeekday(training.getWeekday());
 
         return trainingDTO;
     }
